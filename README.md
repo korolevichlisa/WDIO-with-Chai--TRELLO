@@ -1,4 +1,4 @@
-**Chai Assertion library.** Should, and assert were added to the cardFiltering.spec.js file
+**Chai Assertion library.** Should, expect, and assert were added to the cardFiltering.spec.js file
 
 ## Getting Started
 **1 Sign up on [Trello](https://trello.com)**
