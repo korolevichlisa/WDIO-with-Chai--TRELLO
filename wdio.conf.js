@@ -1,6 +1,13 @@
 import {existsSync,mkdirSync} from 'fs'
 import moment from 'moment';
 
+before: async () => {
+  await import('expect-webdriverio');
+  global.wdioExpect = global.expect;
+  const chai = await import('chai');
+  global.expect = chai.expect;
+}
+
 export const config = {
     //
     // ====================
