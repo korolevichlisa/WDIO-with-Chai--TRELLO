@@ -40,6 +40,6 @@ describe('Search board', () => {
     it('Search a board @search', async () => {
         await homePage.header.logo.click()
         await homePage.header.searchField.setValue('test')
-        await expect(await $('//div[@class="css-jzn3n4"]')).toBeDisplayed()
+        await expect(await $('div.css-jzn3n4')).toBeDisplayed()
     })
 })

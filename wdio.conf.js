@@ -58,7 +58,7 @@ export const config = {
         {
             browserName: 'chrome',    // or 'chromium'
             'goog:chromeOptions': {
-                args: ['--headles', '--disable-gpu', '--window-size=1480,800']
+                args: ['--headless', '--disable-gpu', '--window-size=1480,800']
             }
       },
       {
