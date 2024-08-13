@@ -1,4 +1,5 @@
-import { assert,should } from "chai"
+import { assert, should, expect as expectChai } from "chai"
+import { expect as expectWDIO } from '@wdio/globals'
 import { BoardPage } from "../../po/pages/board.page.js"
 import { HomePage } from "../../po/pages/home.page.js"
 import { SignIn } from "../../po/pages/signIn.page.js"
@@ -40,13 +41,15 @@ describe('Card filtering', () => {
         }
         
         const result = await boardPage.workSpace.cardItemsComponent.firstCard.getText()
-        await result.should.to.be.equal('test task 1')
+        result.should.to.be.equal('test task 1')
     })
 
     it('Filter a card @filter', async () => {
         await boardPage.workSpace.boardHeaderComponent.filterBtn.click()
         await boardPage.workSpace.filterPopUpComponent.filterPopUp()
-        const result = await boardPage.workSpace.cardItemsComponent.listCard
-        await expect(result).toHaveText(['test task 1','test task 2','test task 3','test task 4','test task 5'])
+        const result = await boardPage.workSpace.cardItemsComponent.listCard.map(function(element){
+            return element.getText()
+        })
+        expectChai(result).to.eql(['test task 1','test task 2','test task 3','test task 4','test task 5'])
     })
 })
