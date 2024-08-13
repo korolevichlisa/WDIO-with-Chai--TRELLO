@@ -5,6 +5,11 @@ const cardItemsLocators = {
     textArea: 'form textarea[data-testid="list-card-composer-textarea"]',
     btn: 'form button[data-testid="list-card-composer-add-card-button"]'
 }
+// const listCardLocators = {
+//     allCards: 'ol[@data-testid="list-cards"] > li',
+//     firstCard:
+// }
+const listCard = 'ol[data-testid="list-cards"] > li'
 
 export class CardItemsComponent{
 
@@ -22,6 +27,14 @@ export class CardItemsComponent{
 
     get addCardBtn() {
         return $(cardItemsLocators.btn)
+    }
+
+    get listCard() {
+        return $$(listCard)
+    }
+
+    get firstCard() {
+        return $(listCard + ':first-of-type')
     }
 
     async createCard() {

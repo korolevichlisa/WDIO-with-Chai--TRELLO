@@ -1,7 +1,10 @@
+import { assert,should } from "chai"
 import { BoardPage } from "../../po/pages/board.page.js"
 import { HomePage } from "../../po/pages/home.page.js"
 import { SignIn } from "../../po/pages/signIn.page.js"
-import { StartPage } from"../../po/pages/start.page.js" 
+import { StartPage } from "../../po/pages/start.page.js"
+
+should()
 
 const startPage = new StartPage()
 const signInPage = new SignIn()
@@ -25,7 +28,7 @@ describe('Card filtering', () => {
     it('Create a board @filter', async () => {
         await homePage.header.createMenuBtn.click()
         await homePage.popUpComponent.createBoardMenuPopOver()
-        await expect(await boardPage.workSpace.boardHeaderComponent.title.getText()).toEqual('test-board')
+        assert.equal(await boardPage.workSpace.boardHeaderComponent.title.getText(), 'test-board')
     })
 
     it('Create 5 cards @filter', async () => {
@@ -36,14 +39,14 @@ describe('Card filtering', () => {
             await boardPage.workSpace.cardItemsComponent.addCardBtn.click()
         }
         
-        const result = await $('(//ol[@data-testid="list-cards"]/descendant::li)[1]')
-        await expect(result).toHaveText('test task 1')
-        })
+        const result = await boardPage.workSpace.cardItemsComponent.firstCard.getText()
+        await result.should.to.be.equal('test task 1')
+    })
 
     it('Filter a card @filter', async () => {
         await boardPage.workSpace.boardHeaderComponent.filterBtn.click()
         await boardPage.workSpace.filterPopUpComponent.filterPopUp()
-        const result = await $$('//ol[@data-testid="list-cards"]/descendant::li')
+        const result = await boardPage.workSpace.cardItemsComponent.listCard
         await expect(result).toHaveText(['test task 1','test task 2','test task 3','test task 4','test task 5'])
     })
 })
