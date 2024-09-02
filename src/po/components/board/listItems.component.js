@@ -28,6 +28,6 @@ export class ListItemsComponent{
         await this.createListBtn.click()
         await this.textArea.setValue('test log')
         await this.addListBtn.click()
-        await browser.pause(2000)
+        // await browser.pause(2000)
     }
 }

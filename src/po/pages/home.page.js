@@ -1,7 +1,4 @@
-import { HeaderHomeComponent } from "../components/header.home.component.js";
-import { PopUpComponent } from "../components/home/pop-up.component.js";
-import { BoardListComponent } from "../components/home/boardList.js";
-import { ProfilePopUp } from "../components/home/profile-pop-up.component.js";
+import { HeaderHomeComponent, PopUpComponent, BoardListComponent, ProfilePopUp } from "../components/index.js";
 
 export class HomePage{
     

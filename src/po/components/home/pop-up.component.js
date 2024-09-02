@@ -20,7 +20,7 @@ export class PopUpComponent{
     
     async createBoardMenuPopOver() {
         await this.createBoardBtn.click()
-        await browser.pause(2000)
+        await this.nameBoard.waitForDisplayed({timeout:2000})
         await this.nameBoard.setValue('test-board')
         await this.submitBoardBtn.click()
         await browser.pause(2000)
