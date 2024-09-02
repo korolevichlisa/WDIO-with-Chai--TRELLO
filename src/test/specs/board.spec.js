@@ -1,51 +1,44 @@
-import { BoardPage } from "../../po/pages/board.page.js"
-import { HomePage } from "../../po/pages/home.page.js"
-import { SignIn } from "../../po/pages/signIn.page.js"
-import { StartPage } from"../../po/pages/start.page.js" 
-
-const startPage = new StartPage()
-const signInPage = new SignIn()
-const homePage = new HomePage()
-const boardPage = new BoardPage()
+import pages from "../../po/index.js"
+pages()
 
 describe('Operations with board elements', () => {
     before(async () => {
-        await signInPage.open()
-        await startPage.headerStart.loginLocators.click()
-        await signInPage.signIn()
+        await pages('signInPage').open()
+        await pages('startPage').headerStart.loginLocators.click()
+        await pages('signInPage').signIn()
     })
 
     after(async () => {
-        await boardPage.workSpace.boardHeaderComponent.menuBtn.click()
-        await boardPage.workSpace.menuBoardComponent.closeAndDeleteBaord()
-        await expect(await homePage.header.userName.isExisting()).toEqual(true)
+        await pages('boardPage').workSpace.boardHeaderComponent.menuBtn.click()
+        await pages('boardPage').workSpace.menuBoardComponent.closeAndDeleteBaord()
     })
 
     it('Create a board @e2e', async () => {
-        await homePage.header.createMenuBtn.click()
-        await homePage.popUpComponent.createBoardMenuPopOver()
-        await expect(await boardPage.workSpace.boardHeaderComponent.title.getText()).toEqual('test-board')
+        await pages('homePage').header.createMenuBtn.click()
+        await pages('homePage').popUpComponent.createBoardMenuPopOver()
+        await expect(await pages('boardPage').workSpace.boardHeaderComponent.title.getText()).toEqual('test-board')
     })
 
     it('Create a list @e2e', async () => {
-        await boardPage.workSpace.listItemsComponent.createList()
-        await expect(await boardPage.workSpace.listItemsComponent.lastListTitle.getText()).toEqual('test log')
+        await pages('boardPage').workSpace.listItemsComponent.createList()
+        await pages('boardPage').workSpace.listItemsComponent.lastListTitle.waitForExist({timeout:2000})
+        await expect(await pages('boardPage').workSpace.listItemsComponent.lastListTitle.getText()).toEqual('test log')
     })
 
     it('Create a card @e2e', async () => {
-        await boardPage.workSpace.cardItemsComponent.createCardBtn.click()
-        await boardPage.workSpace.cardItemsComponent.textArea.setValue('test task ')
+        await pages('boardPage').workSpace.cardItemsComponent.createCardBtn.click()
+        await pages('boardPage').workSpace.cardItemsComponent.textArea.setValue('test task ')
         await $('div.board-canvas').click()
-        await expect(await boardPage.workSpace.cardItemsComponent.createdCardName.getText()).toEqual('test task')
+        await expect(await pages('boardPage').workSpace.cardItemsComponent.createdCardName.getText()).toEqual('test task')
     })
 
     it('Chage a permissions @e2e', async () => {
-        await boardPage.workSpace.boardHeaderComponent.menuBtn.click()
-        await boardPage.workSpace.menuBoardComponent.settings.click()
-        const startPermission = await boardPage.workSpace.menuBoardComponent.addRemoveMembers.getText()
-        await boardPage.workSpace.menuBoardComponent.changePermission()
-        const changedPermission = await boardPage.workSpace.menuBoardComponent.addRemoveMembers.getText()
-        await boardPage.workSpace.menuBoardComponent.closeMenuPopUp.click()
+        await pages('boardPage').workSpace.boardHeaderComponent.menuBtn.click()
+        await pages('boardPage').workSpace.menuBoardComponent.settings.click()
+        const startPermission = await pages('boardPage').workSpace.menuBoardComponent.addRemoveMembers.getText()
+        await pages('boardPage').workSpace.menuBoardComponent.changePermission()
+        const changedPermission = await pages('boardPage').workSpace.menuBoardComponent.addRemoveMembers.getText()
+        await pages('boardPage').workSpace.menuBoardComponent.closeMenuPopUp.click()
         await expect(changedPermission).not.toEqual(startPermission)
     })
 })

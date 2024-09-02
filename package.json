@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "wdio": "wdio run ./wdio.conf.js",
-    "test:board": "wdio run ./wdio.conf.js --mochaOpts.grep @e2e",
-    "test:filter": "wdio run ./wdio.conf.js --mochaOpts.grep @filter",
-    "test:search": "wdio run ./wdio.conf.js --mochaOpts.grep @search",
-    "test:edit": "wdio run ./wdio.conf.js --mochaOpts.grep @edit",
+    "test": "echo \"Error: no test specifiedited\" && exit 1",
+    "wdio": "wdio run src/configs/wdio.conf.js",
+    "test:board": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @e2e",
+    "test:filter": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @filter",
+    "test:search": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @search",
+    "test:edit": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @edit",
     "help": "wdio repl chrome --headless"
   },
   "keywords": [],

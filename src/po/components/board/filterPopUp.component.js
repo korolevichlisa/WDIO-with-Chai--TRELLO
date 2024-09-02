@@ -15,8 +15,7 @@ export class FilterPopUpComponent{
 
     async filterPopUp() {
         await this.filterInput.setValue('test')
-        await browser.pause(2000)
+        await this.closeBtn.waitForDisplayed({timeout:2000})
         await this.closeBtn.click()
-        await browser.pause(2000)
     }
 }

@@ -3,7 +3,7 @@ const boardMenuLocators = {
     confirmCloseBoard: 'input[data-testid="close-board-confirm-button"]',
     deleteBoard: 'button[data-testid="close-board-delete-board-button"]',
     confirmDelBoard: 'button[data-testid="close-board-delete-board-confirm-button"]',
-    settings: 'a.js-open-settings',
+    settings: '.board-menu-settings-button-react-root button',
     permissionsAddRemoveMembers: 'a[data-testid="add-remove-members-item"]',
     permissionsForAdminsAddRemoveMembers: 'a[name="admins"]',
     addRemoveMembers: 'a[data-testid="add-remove-members-item"] span.Ok1H3hZ4AitKti',
@@ -49,19 +49,19 @@ export class MenuBoardComponent{
     }
 
     async closeAndDeleteBaord() {
-        await this.closeBoard.scrollIntoView({block:'end'})
+        await this.closeBoard.scrollIntoView({block:'center'})
         await this.closeBoard.click()
         await this.confirmCloseBoard.click()
-        await this.deleteBoard.scrollIntoView({block:'end'})
+        await this.deleteBoard.scrollIntoView({block:'center'})
         await this.deleteBoard.click()
         await this.confirmDelBoard.click()
-        await browser.pause(2000)
+        await this.closeMenuPopUp.waitForExist({timeout:2000})
     }
-
+    
     async changePermission() {
         await this.permissionsAddRemoveMembers.click()
         await this.permissionsForAdminsAddRemoveMembers.click()
-        await browser.pause(2000)
+        await this.closeMenuPopUp.waitForExist({timeout:2000})
    }
 }
 
