@@ -1,5 +1,3 @@
-**Chai Assertion library.** Should, expect, and assert were added to the cardFiltering.spec.js file
-
 ## Getting Started
 **1 Sign up on [Trello](https://trello.com)**
 
@@ -12,7 +10,7 @@ user_pass=your-password
 
 You can run the following tests using the scripts defined in the `package.json` file:
 
-- **All Tests**: Run all tests using wdio:
+- **All WDIO Tests**: Run all tests using wdio:
 
 ```bash
 npm run wdio
@@ -40,4 +38,10 @@ npm run test:search
 
 ```bash
 npm run test:edit
+```
+
+- **5**: Run API tests to create, get, updare, and delete board:
+
+```bash
+npm run test:api
 ```
