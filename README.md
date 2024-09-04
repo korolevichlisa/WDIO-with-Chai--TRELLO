@@ -5,6 +5,11 @@
 ```
 user_email=your-email
 user_pass=your-password
+trelloUrl = https://api.trello.com
+userName = test_user
+key = your key
+boardName = test
+trelloToken = your token
 ```
 ## Running Tests
 
