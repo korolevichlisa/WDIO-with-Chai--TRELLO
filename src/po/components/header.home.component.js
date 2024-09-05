@@ -2,7 +2,8 @@ const headerHomePageLocators = {
     createMenuBtn: 'button[data-testid="header-create-menu-button"]',
     searchField: 'input[data-testid="cross-product-search-input-skeleton"]',
     userName: 'div[title="test_user (jijis24506)"]',
-    logo: 'div.qsCZSrobO7JoSv'
+    logo: 'div.qsCZSrobO7JoSv',
+    findedBoard: 'div.css-jzn3n4'
 }
 
 export class HeaderHomeComponent{
@@ -21,5 +22,9 @@ export class HeaderHomeComponent{
     
     get logo() {
         return $(headerHomePageLocators.logo)
+    }
+
+    get findedBoard() {
+        return $(headerHomePageLocators.findedBoard)
     }
 }

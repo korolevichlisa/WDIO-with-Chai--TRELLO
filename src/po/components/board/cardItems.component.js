@@ -35,6 +35,7 @@ export class CardItemsComponent{
 
     async createCard() {
         await this.createCardBtn.click()
+        // await this.textArea.waitForDisplayed({timeout:2000})
         await this.textArea.setValue('test task')
         await this.addCardBtn.waitForDisplayed({timeout:2000})
         await this.addCardBtn.click()

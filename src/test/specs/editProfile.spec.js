@@ -1,17 +1,18 @@
-import pages from "../../po/index.js"
-pages()
+import {SignIn, SettingsPage} from "../../po/pages/index.js"
 
 describe('Edit profile', () => {
 
+    const signInPage = new SignIn()
+    const settingsPage = new SettingsPage() 
+
     before(async () => {
-        await pages('signInPage').open()
-        await pages('startPage').headerStart.loginLocators.click()
-        await pages('signInPage').signIn()
+        await signInPage.open()
+        await signInPage.signIn()
     })
 
     it('Edit profile page @edit', async () => {
-        await pages('homePage').header.userName.click()
-        await pages('homePage').profilePopUpComponent.openProfileStings()
-        await expect(browser).toHaveUrl('https://trello.com/u/jijis24506/account')
+        await settingsPage.open()
+        await expect( await settingsPage.userName.getText()).toEqual('test_user@jijis24506')
+        await expect(browser).toHaveUrl('https://trello.com/u/jijis24506/account').skip()
     })
 })

@@ -1,44 +1,46 @@
-import pages from "../../po/index.js"
-pages()
+import {SignIn, HomePage, BoardPage} from "../../po/pages/index.js"
 
 describe('Operations with board elements', () => {
+
+    const signInPage = new SignIn()
+    const homePage = new HomePage()
+    const boardPage = new BoardPage()
+
     before(async () => {
-        await pages('signInPage').open()
-        await pages('startPage').headerStart.loginLocators.click()
-        await pages('signInPage').signIn()
+        await signInPage.open()
+        await signInPage.signIn()
     })
 
     after(async () => {
-        await pages('boardPage').workSpace.boardHeaderComponent.menuBtn.click()
-        await pages('boardPage').workSpace.menuBoardComponent.closeAndDeleteBaord()
+        await boardPage.workSpace.boardHeaderComponent.menuBtn.click()
+        await boardPage.workSpace.menuBoardComponent.closeAndDeleteBaord()
     })
 
     it('Create a board @e2e', async () => {
-        await pages('homePage').header.createMenuBtn.click()
-        await pages('homePage').popUpComponent.createBoardMenuPopOver()
-        await expect(await pages('boardPage').workSpace.boardHeaderComponent.title.getText()).toEqual('test-board')
+        await homePage.header.createMenuBtn.click()
+        await homePage.popUpComponent.createBoardMenuPopOver()
+        await expect(await boardPage.workSpace.boardHeaderComponent.title.getText()).toEqual('test-board')
     })
 
     it('Create a list @e2e', async () => {
-        await pages('boardPage').workSpace.listItemsComponent.createList()
-        await pages('boardPage').workSpace.listItemsComponent.lastListTitle.waitForExist({timeout:2000})
-        await expect(await pages('boardPage').workSpace.listItemsComponent.lastListTitle.getText()).toEqual('test log')
+        await boardPage.workSpace.listItemsComponent.createList()
+        await boardPage.workSpace.listItemsComponent.lastListTitle.waitForExist({timeout:2000})
+        await expect(await boardPage.workSpace.listItemsComponent.lastListTitle.getText()).toEqual('test log')
     })
 
     it('Create a card @e2e', async () => {
-        await pages('boardPage').workSpace.cardItemsComponent.createCardBtn.click()
-        await pages('boardPage').workSpace.cardItemsComponent.textArea.setValue('test task ')
-        await $('div.board-canvas').click()
-        await expect(await pages('boardPage').workSpace.cardItemsComponent.createdCardName.getText()).toEqual('test task')
+        await boardPage.workSpace.cardItemsComponent.createCard()
+        await boardPage.workSpace.workSpace.click()
+        await expect(await boardPage.workSpace.cardItemsComponent.createdCardName.getText()).toEqual('test task')
     })
 
     it('Chage a permissions @e2e', async () => {
-        await pages('boardPage').workSpace.boardHeaderComponent.menuBtn.click()
-        await pages('boardPage').workSpace.menuBoardComponent.settings.click()
-        const startPermission = await pages('boardPage').workSpace.menuBoardComponent.addRemoveMembers.getText()
-        await pages('boardPage').workSpace.menuBoardComponent.changePermission()
-        const changedPermission = await pages('boardPage').workSpace.menuBoardComponent.addRemoveMembers.getText()
-        await pages('boardPage').workSpace.menuBoardComponent.closeMenuPopUp.click()
+        await boardPage.workSpace.boardHeaderComponent.menuBtn.click()
+        await boardPage.workSpace.menuBoardComponent.settings.click()
+        const startPermission = await boardPage.workSpace.menuBoardComponent.addRemoveMembers.getText()
+        await boardPage.workSpace.menuBoardComponent.changePermission()
+        const changedPermission = await boardPage.workSpace.menuBoardComponent.addRemoveMembers.getText()
+        await boardPage.workSpace.menuBoardComponent.closeMenuPopUp.click()
         await expect(changedPermission).not.toEqual(startPermission)
     })
 })
