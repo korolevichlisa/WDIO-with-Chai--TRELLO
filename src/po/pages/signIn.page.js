@@ -29,6 +29,6 @@ export class SignIn extends StartPage{
     }
 
     open() {
-        return super.open()
+        return super.open('login')
     }
 }

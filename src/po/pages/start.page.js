@@ -6,7 +6,7 @@ export class StartPage{
         return new HeaderStartComponent(this.container)
     }
 
-    open() {
-        return browser.url('/')
+    open(path) {
+        return browser.url(path)
     }
-}
+} 

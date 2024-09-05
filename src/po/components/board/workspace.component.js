@@ -4,7 +4,13 @@ import { FilterPopUpComponent } from "./filterPopUp.component.js"
 import { ListItemsComponent } from "./listItems.component.js"
 import { MenuBoardComponent } from "./menuBoard.component.js"
 
+const workspase = 'div.board-canvas'
+
 export class WorkspaceComponent{
+
+    get workSpace() {
+        return $(workspase)
+    }
 
     get listItemsComponent() {
         return new ListItemsComponent(this.container)

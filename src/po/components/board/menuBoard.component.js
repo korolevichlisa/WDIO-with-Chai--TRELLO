@@ -1,5 +1,5 @@
 const boardMenuLocators = {
-    closeBoard: 'a.js-close-board',
+    closeBoard: 'button.js-close-board',
     confirmCloseBoard: 'input[data-testid="close-board-confirm-button"]',
     deleteBoard: 'button[data-testid="close-board-delete-board-button"]',
     confirmDelBoard: 'button[data-testid="close-board-delete-board-confirm-button"]',
