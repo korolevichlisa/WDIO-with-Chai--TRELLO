@@ -1,44 +1,44 @@
-import { StartPage } from "./start.page.js"
+/* eslint-disable no-undef */
+import { StartPage } from './start.page.js';
 
 const loginPageLocators = {
-    username: 'input[data-testid="username"]',
-    password: 'input[data-testid="password"]',
-    loginBtn: '#login-submit',
-    mfaDismiss:'#mfa-promote-dismiss'
-}
+  username: 'input[data-testid="username"]',
+  password: 'input[data-testid="password"]',
+  loginBtn: '#login-submit',
+  mfaDismiss: '#mfa-promote-dismiss',
+};
 
-export class SignIn extends StartPage{
-    
-    get usernameInput() {
-        return $(loginPageLocators.username)
-    }
+export class SignIn extends StartPage {
+  get usernameInput() {
+    return $(loginPageLocators.username);
+  }
 
-    get passwordInput() {
-        return $(loginPageLocators.password)
-    }
+  get passwordInput() {
+    return $(loginPageLocators.password);
+  }
 
-    get loginSubmitBtn() {
-        return $(loginPageLocators.loginBtn)
-    }
+  get loginSubmitBtn() {
+    return $(loginPageLocators.loginBtn);
+  }
 
-    get mfaDismiss(){
-        return $(loginPageLocators.mfaDismiss)
-    }
-   
-    async signIn() {
-        await this.usernameInput.setValue(process.env.user_email)
-        await this.loginSubmitBtn.click()
-        await this.passwordInput.waitForDisplayed({timeout: 3500})
-        await this.passwordInput.setValue(process.env.user_pass)
-        await this.loginSubmitBtn.click()
-        // await this.passwordInput.waitForDisplayed({timeout: 6500})
+  get mfaDismiss() {
+    return $(loginPageLocators.mfaDismiss);
+  }
 
-        if(await this.mfaDismiss.isExisting()){
-            await this.mfaDismiss.click()
-        }   
-    }
+  async signIn() {
+    await this.usernameInput.setValue(process.env.user_email);
+    await this.loginSubmitBtn.click();
+    await this.passwordInput.waitForDisplayed({ timeout: 3500 });
+    await this.passwordInput.setValue(process.env.user_pass);
+    await this.loginSubmitBtn.click();
+    // await this.passwordInput.waitForDisplayed({timeout: 6500})
 
-    open() {
-        return super.open('login')
+    if (await this.mfaDismiss.isExisting()) {
+      await this.mfaDismiss.click();
     }
+  }
+
+  open() {
+    return super.open('login');
+  }
 }

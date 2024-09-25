@@ -1,15 +1,15 @@
+/* eslint-disable no-undef */
 const headerStartPageLocators = {
-    login: 'a[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]',
-    signUp: 'a[data-uuid="MJFtCCgVhXrVl7v9HA7EH_signup"]'
-}
+  login: 'a[data-uuid="MJFtCCgVhXrVl7v9HA7EH_login"]',
+  signUp: 'a[data-uuid="MJFtCCgVhXrVl7v9HA7EH_signup"]',
+};
 
-export class HeaderStartComponent{
+export class HeaderStartComponent {
+  get loginLocators() {
+    return $(headerStartPageLocators.login);
+  }
 
-    get loginLocators() {
-        return $(headerStartPageLocators.login)
-    }
-
-    get signUpLocators() {
-        return $(headerStartPageLocators.signUp)
-    }
+  get signUpLocators() {
+    return $(headerStartPageLocators.signUp);
+  }
 }

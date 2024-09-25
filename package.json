@@ -11,18 +11,25 @@
     "test:search": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @search",
     "test:edit": "wdio run src/configs/wdio.conf.js --mochaOpts.grep @edit",
     "help": "wdio repl chrome --headless",
-    "test:api": "node ./src/API/api.js"
+    "test:api": "node ./src/API/api.js",
+    "checkCode": "npx prettier . --write",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
     "@wdio/cli": "^8.39.1",
     "@wdio/local-runner": "^8.39.1",
     "@wdio/mocha-framework": "^8.39.0",
     "@wdio/spec-reporter": "^8.39.0",
     "chromedriver": "^127.0.0",
+    "eslint": "^9.11.1",
+    "eslint-plugin-mocha": "^10.5.0",
+    "globals": "^15.9.0",
+    "prettier": "3.3.3",
     "webdriverio": "^8.39.1"
   },
   "dependencies": {
