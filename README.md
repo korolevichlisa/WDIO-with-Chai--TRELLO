@@ -1,7 +1,9 @@
 ## Getting Started
+
 **1 Sign up on [Trello](https://trello.com)**
 
 **2 Create .env File**: Create a `.env` file in the root of the project directory and add the following environment variables:
+
 ```
 user_email=your-email
 user_pass=your-password
@@ -11,6 +13,7 @@ key = your key
 boardName = test
 trelloToken = your token
 ```
+
 ## Running Tests
 
 You can run the following tests using the scripts defined in the `package.json` file:
