@@ -1,9 +1,17 @@
-name: Hello World
-on: push  
+name: quality gates
+on: 
+  push: 
+    branches: 
+      -main
+  workflow_dispatch:
 jobs:
   hello-world:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.1.0
-      - name: Step name
-        run: echo "Hello World!"
+      - name: Step install
+        run: npm install
+      - name: Step run eslint
+        run: npm run lint
+      - name: Step run prettier
+        run: npm run checkCode
